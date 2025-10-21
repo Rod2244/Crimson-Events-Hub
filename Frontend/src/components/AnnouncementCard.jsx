@@ -14,7 +14,7 @@ export default function AnnouncementCard({ category, color, title, desc, tags, t
       <h2 className="font-semibold text-lg">{title}</h2>
       <p className="text-sm text-gray-600">{desc}</p>
 
-      <div className="flex flex-wrap items-center gap-3 mt-2 text-sm text-gray-700">
+      <div className="flex flex-wrap items-center gap-3 mt-2 text-sm text-gray-700 border-t border-[#d64553] pt-3">
         {tags.map((t, i) => (
           <span key={i} className="flex items-center gap-1 bg-gray-100 px-3 py-1 rounded-full">
             <Users size={14} /> {t}
