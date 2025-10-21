@@ -1,7 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo.jpg";
-import { Search, Bell, LogOut } from "lucide-react";
+import Button from "./Button";
+import { Search, Bell, LogOut, Contact } from "lucide-react";
 
 export default function Navbar() {
   const [showMenu, setShowMenu] = useState(false);
@@ -18,6 +19,11 @@ export default function Navbar() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  const handleAboutus = () => {
+    localStorage.removeItem("user"); 
+    setShowMenu(false);
+    navigate("/about"); 
+  };
  
   const handleLogout = () => {
     localStorage.removeItem("user"); 
@@ -67,12 +73,18 @@ export default function Navbar() {
             <p className="px-4 py-2 text-sm border-b">
               Logged in as <span className="font-semibold">Marie</span>
             </p>
-            <button
+            <Button
+              onClick={handleAboutus}
+              className="w-full flex items-center gap-2 px-4 py-2 text-sm text-left hover:bg-gray-100 transition"
+            >
+              <Contact size={16} /> About Us
+            </Button>
+            <Button
               onClick={handleLogout}
               className="w-full flex items-center gap-2 px-4 py-2 text-sm text-left hover:bg-gray-100 transition"
             >
               <LogOut size={16} /> Logout
-            </button>
+            </Button>
           </div>
         )}
       </div>
