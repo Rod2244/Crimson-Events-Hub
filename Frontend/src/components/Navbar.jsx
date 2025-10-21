@@ -1,14 +1,13 @@
-import React, { useState, useRef, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; // ✅ import navigate
+import { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo.jpg";
 import { Search, Bell, LogOut } from "lucide-react";
 
 export default function Navbar() {
   const [showMenu, setShowMenu] = useState(false);
   const menuRef = useRef();
-  const navigate = useNavigate(); // ✅ initialize navigation
+  const navigate = useNavigate();
 
-  // Hide menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (menuRef.current && !menuRef.current.contains(e.target)) {
@@ -19,17 +18,15 @@ export default function Navbar() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // ✅ Logout function
+ 
   const handleLogout = () => {
-    // Optional: clear any user session or token here
     localStorage.removeItem("user"); 
     setShowMenu(false);
-    navigate("/login"); // ✅ redirect to login page
+    navigate("/login"); 
   };
 
   return (
     <header className="w-full bg-[#d64553] text-white py-2 px-6 flex items-center justify-between shadow-md relative">
-      {/* Left: Logo + Title */}
       <div className="flex items-center gap-3">
         <img
           src={logo}
@@ -44,7 +41,6 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Center: Search Bar */}
       <div className="flex items-center bg-white rounded-full px-3 py-1 w-96 max-w-full">
         <Search size={16} className="text-gray-400 mr-2" />
         <input
@@ -54,13 +50,11 @@ export default function Navbar() {
         />
       </div>
 
-      {/* Right: Icons */}
       <div className="flex items-center gap-4 relative" ref={menuRef}>
         <button className="bg-white text-[#d64553] p-2 rounded-full hover:bg-[#ffe6e9] transition">
           <Bell size={18} />
         </button>
 
-        {/* Profile Button */}
         <button
           onClick={() => setShowMenu(!showMenu)}
           className="w-8 h-8 rounded-full bg-gray-600 flex items-center justify-center font-semibold cursor-pointer hover:bg-gray-700 transition"
@@ -68,14 +62,13 @@ export default function Navbar() {
           M
         </button>
 
-        {/* Popup Card */}
         {showMenu && (
           <div className="absolute right-0 top-12 bg-white text-gray-800 shadow-lg rounded-xl w-40 py-2 z-50">
             <p className="px-4 py-2 text-sm border-b">
-              Logged in as <span className="font-semibold">Mark</span>
+              Logged in as <span className="font-semibold">Marie</span>
             </p>
             <button
-              onClick={handleLogout} // ✅ navigate to login
+              onClick={handleLogout}
               className="w-full flex items-center gap-2 px-4 py-2 text-sm text-left hover:bg-gray-100 transition"
             >
               <LogOut size={16} /> Logout

@@ -1,4 +1,3 @@
-import React from "react";
 import AuthCard from "../components/AuthCard";
 import LoginForm from "../components/LoginForm";
 

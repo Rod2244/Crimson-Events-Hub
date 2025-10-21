@@ -1,4 +1,3 @@
-import React from "react";
 import Button from "./Button";
 import { Link, useNavigate } from "react-router-dom";
 import { Mail, KeyRound } from "lucide-react";
@@ -13,7 +12,6 @@ export default function LoginForm() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // Handle login logic here
     navigate("/homepage");
   };
 

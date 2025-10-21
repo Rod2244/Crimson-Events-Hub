@@ -1,4 +1,3 @@
-import React from "react";
 import Button from "./Button";
 import { Link, useNavigate } from "react-router-dom";
 import { Mail, KeyRound, User } from "lucide-react";
@@ -12,7 +11,6 @@ export default function SignupForm() {
 
   const handleSignup = (e) => {
     e.preventDefault();
-    // Handle signup logic here
     navigate("/homepage");
   };
 

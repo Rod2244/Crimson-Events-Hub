@@ -1,5 +1,6 @@
 import Navbar from "../components/Navbar"
 import LatestUpdates from "../components/LatestUpdates";
+import Dashboard from "../components/Dashboard";
 
 export default function HomePage() {
   return (
@@ -7,6 +8,7 @@ export default function HomePage() {
       <Navbar/>
       <main className="p-6">
         <LatestUpdates />
+        <Dashboard />
       </main>
       <div className="p-8 text-center">
         <h1 className="text-3xl font-bold">Welcome to the Homepage!</h1>
