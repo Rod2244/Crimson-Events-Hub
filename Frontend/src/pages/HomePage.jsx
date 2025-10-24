@@ -10,9 +10,6 @@ export default function HomePage() {
         <LatestUpdates />
         <Dashboard />
       </main>
-      <div className="p-8 text-center">
-        <h1 className="text-3xl font-bold">Welcome to the Homepage!</h1>
-      </div>
     </div>
   );
 }

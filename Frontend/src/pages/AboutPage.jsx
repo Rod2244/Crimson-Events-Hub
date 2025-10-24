@@ -14,7 +14,7 @@ export default function AboutPage() {
         </div>
 
         <section className="bg-white p-8 rounded-2xl shadow-sm mb-8">
-          <h2 className="text-2xl font-semibold mb-3">Our Mission</h2>
+          <h2 className="text-2xl text-center font-semibold mb-3">Our Mission</h2>
           <p className="text-gray-700 leading-relaxed">
             Crimson Events Hub is designed to streamline event announcements, registrations,
             and updates within Western Mindanao State University. Our mission is to improve
@@ -24,7 +24,7 @@ export default function AboutPage() {
         </section>
 
         <section className="bg-white p-8 rounded-2xl shadow-sm mb-8">
-          <h2 className="text-2xl font-semibold mb-3">What We Offer</h2>
+          <h2 className="text-2xl text-center font-semibold mb-3">What We Offer</h2>
           <ul className="list-disc pl-6 text-gray-700 leading-relaxed">
             <li>Centralized platform for event and announcement posting.</li>
             <li>Approval-based system to ensure verified content visibility.</li>
@@ -35,7 +35,7 @@ export default function AboutPage() {
         </section>
 
         <section className="bg-white p-8 rounded-2xl shadow-sm">
-          <h2 className="text-2xl font-semibold mb-3">Meet the Team</h2>
+          <h2 className="text-2xl text-center font-semibold mb-3">Meet the Team</h2>
           <p className="text-gray-700 mb-6">
             Crimson Events Hub was developed by a passionate group of students from the College of Computing Studies,
             with the goal of enhancing digital communication and event management across the university.

@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import logo from "../assets/logo.jpg";
 import Button from "./Button";
 import { Search, Bell, LogOut, Contact } from "lucide-react";
@@ -33,7 +33,7 @@ export default function Navbar() {
 
   return (
     <header className="w-full bg-[#d64553] text-white py-2 px-6 flex items-center justify-between shadow-md relative">
-      <div className="flex items-center gap-3">
+      <Link to="/homepage" className="flex items-center gap-3">
         <img
           src={logo}
           alt="Logo"
@@ -45,7 +45,7 @@ export default function Navbar() {
             WMSU EVENT MANAGEMENT
           </span>
         </div>
-      </div>
+      </Link>
 
       <div className="flex items-center bg-white rounded-full px-3 py-1 w-96 max-w-full">
         <Search size={16} className="text-gray-400 mr-2" />
