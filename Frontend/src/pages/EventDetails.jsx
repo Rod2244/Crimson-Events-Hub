@@ -1,6 +1,9 @@
 import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import { Calendar, Clock, MapPin, Share2, Bookmark, ArrowRight } from "lucide-react";
+import AboutEventCard from "../components/AbouteventCard";
+import EventDetailsSection from "../components/EventdetailSection";
 
 export default function EventDetails() {
   const { id } = useParams();
@@ -13,6 +16,8 @@ export default function EventDetails() {
     location: "CCS Building, Computer Lab 2",
     category: "Academic",
     status: "Upcoming",
+    audience: "CCS Students",
+    deadline: "November 15, 2025",
     description:
       "Join us for the most exciting coding competition of the year! The CCS Hackathon 2025 brings together the brightest minds in computer science to solve real-world problems through innovative tech solutions.",
   };
@@ -21,7 +26,8 @@ export default function EventDetails() {
     <div>
       <Navbar />
       <div className="min-h-screen bg-gray-100 py-10 p-13">
-        <div className="bg-white w-full p-6 rounded-xl shadow-sm border border-gray-200 gap-3">
+        <section className="bg-gray-100 py-4 px-6 border-t border-[#d64553] ">
+        <div className="bg-white w-full p-6 rounded-xl shadow-sm border border-gray-200 gap-3 pb-8 mb-8">
           <span className={`${event.color} text-white text-xs font-semibold px-3 py-1 rounded-md uppercase`}>
             {event.category}
           </span>
@@ -61,6 +67,12 @@ export default function EventDetails() {
             </button>
           </div>
         </div>
+        <AboutEventCard />
+        <div className="mt-8">
+          <EventDetailsSection event={event} />
+        </div>
+        </section>
+        
       </div>
     </div>
   );

@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Button from "./Button";
 import AnnouncementCard from "./AnnouncementCard";
 
 export default function LatestUpdates() {
+  const [announcements, setAnnouncements] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [activeCategory, setActiveCategory] = useState("All");
 
   const categories = [
@@ -13,38 +15,23 @@ export default function LatestUpdates() {
     "Council Events",
   ];
 
-  const announcements = [
-    {
-      id: 1,
-      category: "Academic",
-      color: "bg-[#a22c36]",
-      title: "Midterm Examination Schedule for AY 2024–2025",
-      desc: "The midterm examinations will be conducted from September 29 to October 3, 2025. Students are advised to check their respective department schedules for specific exam times.",
-      tags: ["Registrar’s Office", "All Students"],
-      time: "2 hours ago",
-      date: "Sept 29–Oct 3, 2025",
-    },
-    {
-      id: 2,
-      category: "Organization",
-      color: "bg-green-600",
-      title: "CCS Tech Summit 2025 – Call for Volunteers",
-      desc: "The College of Computing is organizing the annual Tech Summit. We’re looking for enthusiastic volunteers to help make this event successful!",
-      tags: ["CCS Student Council"],
-      time: "5 hours ago",
-      date: "Nov 15, 2025",
-    },
-    {
-      id: 3,
-      category: "Non-Academic",
-      color: "bg-yellow-500",
-      title: "Annual Intramurals 2025 Registration Now Open",
-      desc: "Sign up for this year’s intramurals! Various sports categories available including basketball, volleyball, badminton, and chess. Registration deadline: September 25, 2025.",
-      tags: ["Sports Development Office"],
-      time: "1 day ago",
-      date: "Oct 20–24, 2025",
-    },
-  ];
+  useEffect(() => {
+    fetch("/data/data.json")
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return res.json();
+      })
+      .then((data) => {
+        setAnnouncements(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching announcements:", error);
+        setLoading(false);
+      });
+  }, []);
 
   const filteredAnnouncements =
     activeCategory === "All"
@@ -75,18 +62,21 @@ export default function LatestUpdates() {
           );
         })}
       </div>
-
-      <div className="flex flex-col gap-4">
-        {filteredAnnouncements.length > 0 ? (
-          filteredAnnouncements.map((item) => (
-            <AnnouncementCard key={item.id} {...item} />
-          ))
-        ) : (
-          <p className="text-gray-500 text-center py-8">
-            No announcements found in this category.
-          </p>
-        )}
-      </div>
+      {loading ? (
+        <p className="text-gray-500 text-center py-8">Loading announcements...</p>
+      ) : (
+        <div className="flex flex-col gap-4">
+          {filteredAnnouncements.length > 0 ? (
+            filteredAnnouncements.map((item) => (
+              <AnnouncementCard key={item.id} {...item} />
+            ))
+          ) : (
+            <p className="text-gray-500 text-center py-8">
+              No announcements found in this category.
+            </p>
+          )}
+        </div>
+      )}
     </section>
   );
 }
