@@ -25,19 +25,16 @@ const ShareEvent = () => {
 
       <div className="border-t border-gray-200 pt-4">
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-          {/* Facebook Button */}
           <div className={buttonStyle}>
             <FacebookIcon />
             <span className={labelStyle}>Facebook</span>
           </div>
 
-          {/* Telegram Button */}
           <div className={buttonStyle}>
             <Send className="text-sky-500" />
             <span className={labelStyle}>Telegram</span>
           </div>
 
-          {/* Copy Link Button */}
           <div className={buttonStyle}>
             <Link className="text-gray-700" />
             <span className={labelStyle}>Copy Link</span>
