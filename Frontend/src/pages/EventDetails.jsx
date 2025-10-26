@@ -1,9 +1,12 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import { Calendar, Clock, MapPin, Share2, Bookmark, ArrowRight } from "lucide-react";
 import AboutEventCard from "../components/AbouteventCard";
 import EventDetailsSection from "../components/EventdetailSection";
+import AttachmentFile from "../components/AttachmentFile";
+import OrganizerSection from "../components/OrganizerSection";
+import ShareEvent from "../components/ShareEvent";
+import RelatedEvents from "../components/RelatedEvents";
 
 export default function EventDetails() {
   const { id } = useParams();
@@ -70,6 +73,18 @@ export default function EventDetails() {
         <AboutEventCard />
         <div className="mt-8">
           <EventDetailsSection event={event} />
+        </div>
+        <div className="mt-8">
+          <AttachmentFile/>
+        </div>
+        <div className="mt-8">
+          <OrganizerSection />
+        </div>
+        <div className="mt-8">
+          <ShareEvent />
+        </div>
+        <div className="mt-8">
+          <RelatedEvents />
         </div>
         </section>
         

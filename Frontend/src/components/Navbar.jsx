@@ -20,34 +20,40 @@ export default function Navbar() {
   }, []);
 
   const handleAboutus = () => {
-    localStorage.removeItem("user"); 
+    localStorage.removeItem("user");
     setShowMenu(false);
-    navigate("/about"); 
+    navigate("/about");
   };
- 
+
   const handleLogout = () => {
-    localStorage.removeItem("user"); 
+    localStorage.removeItem("user");
     setShowMenu(false);
-    navigate("/login"); 
+    navigate("/login");
   };
 
   return (
-    <header className="w-full bg-[#d64553] text-white py-2 px-6 flex items-center justify-between shadow-md relative">
-      <Link to="/homepage" className="flex items-center gap-3">
+    <header className="w-full bg-[#d64553] text-white py-2 px-4 sm:px-6 flex flex-wrap items-center justify-between shadow-md relative">
+      {/* Logo + Name */}
+      <Link to="/homepage" className="flex items-center gap-3 mb-2 sm:mb-0">
         <img
           src={logo}
           alt="Logo"
-          className="w-12 h-12 rounded-full object-cover shadow-md"
+          className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover shadow-md"
         />
+        {/* Name changes to acronym on small screens */}
         <div className="flex flex-col leading-tight">
-          <span className="font-semibold text-lg">Crimson Events Hub</span>
-          <span className="text-xs tracking-wide text-[#ffdada]">
+          <span className="font-semibold text-base sm:text-lg">
+            <span className="sm:hidden">CEH</span>
+            <span className="hidden sm:inline">Crimson Events Hub</span>
+          </span>
+          <span className="text-[10px] sm:text-xs tracking-wide text-[#ffdada]">
             WMSU EVENT MANAGEMENT
           </span>
         </div>
       </Link>
 
-      <div className="flex items-center bg-white rounded-full px-3 py-1 w-96 max-w-full">
+      {/* Search Bar (always visible) */}
+      <div className="flex items-center bg-white rounded-full px-3 py-1 w-full sm:w-72 lg:w-96 order-3 sm:order-none">
         <Search size={16} className="text-gray-400 mr-2" />
         <input
           type="text"
@@ -56,7 +62,11 @@ export default function Navbar() {
         />
       </div>
 
-      <div className="flex items-center gap-4 relative" ref={menuRef}>
+      {/* Icons + Menu */}
+      <div
+        className="flex items-center gap-3 sm:gap-4 relative mb-2 sm:mb-0"
+        ref={menuRef}
+      >
         <button className="bg-white text-[#d64553] p-2 rounded-full hover:bg-[#ffe6e9] transition">
           <Bell size={18} />
         </button>
@@ -68,6 +78,7 @@ export default function Navbar() {
           M
         </button>
 
+        {/* Dropdown Menu */}
         {showMenu && (
           <div className="absolute right-0 top-12 bg-white text-gray-800 shadow-lg rounded-xl w-40 py-2 z-50">
             <p className="px-4 py-2 text-sm border-b">
